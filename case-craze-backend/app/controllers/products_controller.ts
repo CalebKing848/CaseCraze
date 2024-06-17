@@ -4,7 +4,7 @@ import { HttpContext } from "@adonisjs/core/http";
 
 export default class ProductsController {
 
-    async index({ request }: HttpContext ) {
-        return `Hello world from ${request.url()} endpoint`
+    async index({ view }: HttpContext ) {
+        return view.render('pages/products/list')
     }
 }
