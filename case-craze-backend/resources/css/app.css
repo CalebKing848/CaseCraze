@@ -13,11 +13,11 @@
 }
 
 li {
-   list-style-type: none;
+    list-style-type: none;
 }
 
 a:hover {
-    color: #ededed; 
+    color: #ededed;
 }
 
 .item-container {
@@ -30,7 +30,7 @@ a:hover {
 
 .login-main {
     width: 35%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 0px auto;
     padding: 35px 40px 40px 40px;
 }
@@ -42,12 +42,14 @@ a:hover {
 
 .login-label {
     font-weight: bold;
+    font-size: 15px;
 }
 
 .login-input {
-    border: 1px solid #000;
+    border: 1px solid #c8c8c8;
     font-size: 16px;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .login-item {
@@ -59,9 +61,25 @@ a:hover {
     background-color: #000;
     color: #fff;
     width: 100%;
-    padding: 4px;
+    padding: 7px;
 }
 
 .login-item-two {
     margin-top: 19px;
+}
+
+.error-message {
+    text-align: center;
+    padding: 10px;
+    color: red;
+}
+
+table, th, td {
+    border: 1px solid #c8c8c8;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
 }

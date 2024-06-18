@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expenses list</title>
   @vite('resources/js/app.js')
 </head>
-<body>
 
+<body>
   <header class="top-container">
     <div class="container mx-auto flex justify-between items-center h-10 nav-items">
       <div>
+        <ul class="flex space-x-4">
         <li>
           <a href="/"> Home </a>
         </li>
+
+        <li>
+          <a href="/categories/create" up-follow>
+            Create category
+          </a>
+        </li>
+        <li>
+          <a href="/products/create" up-follow>
+            Create expense </a>
+        </li>
+      </ul>
       </div>
       <div>
         <nav>
           <ul class="flex space-x-4">
             @if(auth.user)
-              <li> {{ auth.user.fullName }} </li>
-              <li>
-                <a href="/logout"> logout </a>
-              </li>
-              <!-- <li>
-                <a
-                  href="/categories/create"
-                  class="underline"
-                  up-follow
-                  >
-                  Create category
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/products/create"
-                  class="underline"
-                  up-follow
-                  > 
-                  Create expense </a>
-              </li> -->
+            <li> {{ auth.user.fullName }} </li>
+            <li>
+              <form id="logout-form" action="/logout" method="POST">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <button type="submit">Logout</button>
+              </form>
+            </li>
             @else
-              <li>
-                <a href="/login"> Login </a>
-              </li>
+            <li>
+              <a href="/login"> Login </a>
+            </li>
             @end
           </ul>
         </nav>
@@ -53,4 +52,5 @@
 
   {{{ await $slots.main() }}}
 </body>
+
 </html>

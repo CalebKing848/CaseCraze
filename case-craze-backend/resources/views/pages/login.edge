@@ -1,11 +1,6 @@
 @layouts.main()
-  @flashMessage('errorsBag')
-    @each(message in $message)
-      <p> {{ message }} </p>
-    @end
-  @end
 
-  <div class="item-container">
+<div class="item-container">
 
   <main class="login-main">
     <h2 class="login-header">Login</h2>
@@ -28,6 +23,13 @@
         </div>
       </form>
     </div>
+
+    @flashMessage('errorsBag')
+      @each(message in $message)
+        <p class="error-message"> {{ message }} </p>
+      @end
+    @end
+
   </main>
 
 </div>

@@ -3,15 +3,19 @@
     <div class="container mx-auto flex">
       <div class="w-64">
         <aside class="h-full border-r border-r-gray-300">
-          <h3 class="text-3xl font-bold underline">Categories</h3>
+          <h3 class="text-3xl">Categories</h3>
 
-          <div class="mt-6">
-            <ul>
-              @each(category in categories)
-                {{ category.name }}
-              @end
-            </ul>
-          </div>
+          <table style="width:100%">
+            <tr>
+              <th>Category name</th>
+            </tr>
+            @each(category in categories)
+              <tr>
+                <td>{{ category.name }}</td>
+              </tr>
+            @end
+          </table>
+ 
         </aside>
       </div>
 
