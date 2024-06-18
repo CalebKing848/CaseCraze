@@ -26,6 +26,7 @@ server.use([
   () => import('#middleware/container_bindings_middleware'),
   () => import('@adonisjs/static/static_middleware'),
   () => import('@adonisjs/vite/vite_middleware'),
+  () => import('@adonisjs/cors/cors_middleware')
 ])
 
 /**
@@ -46,3 +47,17 @@ router.use([
 export const middleware = router.named({
   auth: () => import('#middleware/auth_middleware')
 })
+
+import { defineConfig } from '@adonisjs/cors'
+
+const corsConfig = defineConfig({
+  enabled: true,
+  origin: true,
+  methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
+  headers: true,
+  exposeHeaders: [],
+  credentials: true,
+  maxAge: 90,
+})
+
+export default corsConfig

@@ -12,6 +12,12 @@ export default class ProductsController {
       categories,
       products,
     })
+    
+  }
+
+  async getAllProducts({ response }: HttpContext) {
+    const products = await Product.all();
+    return response.json(products);
   }
 
   async create({ view }: HttpContext) {

@@ -22,3 +22,5 @@ router.post('/logout', [SessionController, 'destroy']).use(middleware.auth())
 
 router.resource('categories', CategoriesController).use('*', middleware.auth())
 router.resource('products', ProductsController).use('*', middleware.auth())
+
+router.get('/api/products', [ProductsController, 'getAllProducts']);
