@@ -1,59 +1,44 @@
-<!DOCTYPE html>
-<html>
+@layouts.main()
+  <main class="py-24">
+    <div class="container mx-auto flex">
+      <div class="w-64">
+        <aside class="h-full border-r border-r-gray-300">
+          <h3 class="text-3xl font-bold underline">Categories</h3>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Products list</title>
-    @vite(['resources/css/app.css'])
+          <div class="mt-6">
+            <ul>
+              @each(category in categories)
+                {{ category.name }}
+              @end
+            </ul>
+          </div>
+        </aside>
+      </div>
 
-</head>
-
-<body>
-
-    <header class="bg-gray-100 border-b border-b-gray-300">
-        <div class="container mx-auto flex justify-between items-center h-16">
+      <div class="pl-16">
+        <h3 class="text-3xl font-bold underline">Expenses</h3>
+        <div class="mt-8">
+          @each(product in products)
             <div>
-                <a href="">Products tracker</a>
+              <h4 class="font-semibold text-2xl">{{ product.title }}</h4>
+              <ul>
+                <li>
+                  <strong>Amount</strong>
+                  {{ product.amount }}
+                </li>
+                <li>
+                  <strong>Category</strong>
+                  {{ product.category.name }}
+                </li>
+                <li>
+                  <strong>Transaction date</strong>
+                  {{ product.transactionDate }}
+                </li>
+              </ul>
             </div>
-            <div>
-                <nav>
-                    <ul class="flex space-x-4">
-                        @if(auth.user)
-                        {{ auth.user.fullName }}
-                        @else
-                        <li>
-                            <a href="/login"> Login </a>
-                        </li>
-                        @end
-
-                        <li>
-                            <a href="/categories/create" class="underline" up-follow>Create category</a>
-                        </li>
-                        <li>
-                            <a href="/expenses/create" class="underline" up-follow> Create product </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+          @end
         </div>
-    </header>
-
-    <main class="py-24">
-        <div class="container mx-auto flex">
-            <div class="w-64">
-                <aside class="h-full border-r border-r-gray-300">
-                    <h3 class="text-3xl font-bold underline">Categories</h3>
-                </aside>
-            </div>
-
-            <div class="pl-16">
-                <h3 class="text-3xl font-bold underline">Products</h3>
-            </div>
-        </div>
-    </main>
-
-
-</body>
-
-</html>
+      </div>
+    </div>
+  </main>
+@end
