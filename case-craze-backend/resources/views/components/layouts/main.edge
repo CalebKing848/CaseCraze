@@ -24,7 +24,7 @@
         </li>
         <li>
           <a href="/products/create" up-follow>
-            Create expense </a>
+            Create product </a>
         </li>
       </ul>
       </div>
@@ -36,7 +36,7 @@
             <li>
               <form id="logout-form" action="/logout" method="POST">
                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-                <button type="submit">Logout</button>
+                <button class="logout-btn" type="submit">Logout</button>
               </form>
             </li>
             @else

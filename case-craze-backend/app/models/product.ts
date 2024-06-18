@@ -16,9 +16,9 @@ export default class Product extends BaseModel {
   @column()
   declare amount: number
 
-  @column.date()
-  declare transactionDate: DateTime
-
+  @column()
+  declare imageUrl: string 
+  
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

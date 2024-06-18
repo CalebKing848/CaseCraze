@@ -5,6 +5,7 @@
 .top-container {
     background: #000;
     color: #fff;
+    transition: 0.3s ease;
 }
 
 .nav-items {
@@ -17,6 +18,14 @@ li {
 }
 
 a:hover {
+    color: #ededed;
+}
+
+.logout-btn {
+    transition: 0.3s ease;
+}
+
+.logout-btn:hover {
     color: #ededed;
 }
 
@@ -46,10 +55,13 @@ a:hover {
 }
 
 .login-input {
-    border: 1px solid #c8c8c8;
     font-size: 16px;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 2px;
+}
+
+.login-input:focus {
+    outline: none;
 }
 
 .login-item {
@@ -62,16 +74,27 @@ a:hover {
     color: #fff;
     width: 100%;
     padding: 7px;
+    transition: 0.3s ease;
 }
 
+.login-btn:hover {
+    background-color: #cdcdcd;
+    color: #000;
+}
+
+
 .login-item-two {
-    margin-top: 19px;
+    margin-top: 20px;
 }
 
 .error-message {
     text-align: center;
     padding: 10px;
     color: red;
+}
+
+.table-content {
+    margin-top: 20px;
 }
 
 table, th, td {
@@ -82,4 +105,78 @@ table, th, td {
 th, td {
     padding: 5px;
     text-align: left;
+}
+
+.categories-container {
+    width: 300px;
+    margin-left: 35px;
+}
+
+.main-container {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.products-container {
+    width: 900px;
+}
+
+.create-container {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 24px;
+}
+
+.create-main-container {
+    width: 800px;
+}
+
+.my-6 {
+    margin: 0px;
+}
+
+.create-form input {
+    width: 100%;
+    border-radius: 2px;
+}
+
+
+.create-form input:focus {
+    outline: none;
+}
+
+.create-form label {
+    margin-bottom: 8px;
+}
+
+.create-form select {
+    width: 100%;
+    border-radius: 2px;
+    height: 35px;
+}
+
+
+.submit-btn {
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+    transition: 0.3s ease;
+}
+
+.submit-btn2 {
+    margin-top: 25px;
+}
+
+.submit-btn:hover {
+    background-color: #cdcdcd;
+    color: #000;
+}
+
+.categories-heading {
+    margin-bottom: 15px;
+}
+
+
+.add-form input {
+    margin-bottom: 10px;
 }

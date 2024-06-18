@@ -1,21 +1,25 @@
 @layouts.main()
-  <main class="py-24">
-    <div class="container mx-auto flex">
-      <div class="w-2xl">
-        <form action="/products" method="post" up-submit>
+  <main>
+    <div class="container mx-auto flex main-container">
+      <div class="create-main-container">
+        <h3 class="text-3xl categories-heading">Create Products</h3>
+        <div class="create-container">
+        <form class="create-form add-form" action="/products" method="post" up-submit>
           {{ csrfField() }}
 
           @!input({ name: 'title', title: 'Title' })
-          @!input({ name: 'amount', title: 'Transaction amount' })
-          @!input({ name: 'transactionDate', title: 'Transaction date', type: 'date' })
+          @!input({ name: 'amount', title: 'Price' })
+          @!input({ name: 'imageUrl', title: 'Image Url'})
           @!select({ name: 'categoryId', options: categories, title: 'Category' })
 
           <div>
-            <button type="submit" class="bg-gray-900 text-gray-100 py-1 px-2">
-              Create expense
+            <button type="submit" class="submit-btn submit-btn2 bg-gray-900 text-gray-100 py-1 px-2">
+              Submit
             </button>
           </div>
         </form>
+        </div>
+      </div>
       </div>
     </div>
   </main>

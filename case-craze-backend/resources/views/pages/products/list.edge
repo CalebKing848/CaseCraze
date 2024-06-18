@@ -1,48 +1,52 @@
 @layouts.main()
-  <main class="py-24">
-    <div class="container mx-auto flex">
-      <div class="w-64">
-        <aside class="h-full border-r border-r-gray-300">
-          <h3 class="text-3xl">Categories</h3>
+<main>
+  <div class="container mx-auto flex main-container">
 
-          <table style="width:100%">
-            <tr>
-              <th>Category name</th>
-            </tr>
-            @each(category in categories)
-              <tr>
-                <td>{{ category.name }}</td>
-              </tr>
-            @end
-          </table>
- 
-        </aside>
-      </div>
+    <div class="products-container">
+      <aside class="h-full">
+        <h3 class="text-3xl">Products</h3>
 
-      <div class="pl-16">
-        <h3 class="text-3xl font-bold underline">Expenses</h3>
-        <div class="mt-8">
+        <table class="table-content" style="width:100%">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image URL</th>
+            <th>Category</th>
+          </tr>
           @each(product in products)
-            <div>
-              <h4 class="font-semibold text-2xl">{{ product.title }}</h4>
-              <ul>
-                <li>
-                  <strong>Amount</strong>
-                  {{ product.amount }}
-                </li>
-                <li>
-                  <strong>Category</strong>
-                  {{ product.category.name }}
-                </li>
-                <li>
-                  <strong>Transaction date</strong>
-                  {{ product.transactionDate }}
-                </li>
-              </ul>
-            </div>
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.amount }}</td>
+            <td>{{ product.imageUrl }}</td>
+            <td>{{ product.category.name }}</td>
+          </tr>
           @end
-        </div>
-      </div>
+        </table>
+
+      </aside>
     </div>
-  </main>
+
+
+
+    <div class="categories-container">
+      <aside class="h-full">
+        <h3 class="text-3xl">Categories</h3>
+
+        <table class="table-content" style="width:100%">
+          <tr>
+            <th>Category name</th>
+          </tr>
+          @each(category in categories)
+          <tr>
+            <td>{{ category.name }}</td>
+          </tr>
+          @end
+        </table>
+
+      </aside>
+    </div>
+  </div>
+</main>
 @end

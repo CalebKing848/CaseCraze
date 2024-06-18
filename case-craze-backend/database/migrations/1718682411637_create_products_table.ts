@@ -15,7 +15,7 @@ export default class extends BaseSchema {
         .onDelete('CASCADE')
       table.string('title').notNullable()
       table.integer('amount').notNullable()
-      table.date('transaction_date').nullable()
+      table.string('image_url').nullable()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

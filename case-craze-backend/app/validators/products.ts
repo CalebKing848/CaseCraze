@@ -1,10 +1,10 @@
 import vine from '@vinejs/vine'
 
-export const createExpenseValidator = vine.compile(
+export const createProductValidator = vine.compile(
   vine.object({
     title: vine.string().minLength(4),
     amount: vine.number().positive(),
-    transactionDate: vine.date(),
+    imageUrl: vine.string().url(),
     categoryId: vine.number(),
   })
 )

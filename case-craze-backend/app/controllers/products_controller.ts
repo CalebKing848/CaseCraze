@@ -1,8 +1,7 @@
 import Category from '#models/category'
 import Product from '#models/product'
-import { createExpenseValidator } from '#validators/products'
+import { createProductValidator } from '#validators/products'
 import type { HttpContext } from '@adonisjs/core/http'
-import { DateTime } from 'luxon'
 
 export default class ProductsController {
   async index({ view }: HttpContext) {
@@ -21,13 +20,13 @@ export default class ProductsController {
   }
 
   async store({ request, response }: HttpContext) {
-    const payload = await request.validateUsing(createExpenseValidator)
+    const payload = await request.validateUsing(createProductValidator)
     const category = await Category.findOrFail(payload.categoryId)
 
     await category.related('products').create({
       title: payload.title,
       amount: payload.amount,
-      transactionDate: DateTime.fromJSDate(payload.transactionDate),
+      imageUrl: payload.imageUrl, 
     })
 
     response.redirect('/')
