@@ -3,8 +3,6 @@ import axios from 'axios';
 
 import Navigation from "./Navigation/Nav";
 import Products from "./Products/Products";
-import products from "./db/data";
-import Recommended from "./Recommended/Recommended";
 import Sidebar from "./Sidebar/Sidebar";
 import Card from "./components/Card";
 import "./index.css";
@@ -91,7 +89,6 @@ function App() {
     <>
       <Sidebar handleChange={handleChange} />
       <Navigation query={query} handleInputChange={handleInputChange} />
-      <Recommended handleClick={handleClick} />
       <Products result={result} />
     </>
   );
