@@ -18,9 +18,20 @@
             </div>
             <div>
                 <nav>
-                    <ul>
+                    <ul class="flex space-x-4">
+                        @if(auth.user)
+                        {{ auth.user.fullName }}
+                        @else
                         <li>
-                            <a href=""> Login </a>
+                            <a href="/login"> Login </a>
+                        </li>
+                        @end
+
+                        <li>
+                            <a href="/categories/create" class="underline" up-follow>Create category</a>
+                        </li>
+                        <li>
+                            <a href="/expenses/create" class="underline" up-follow> Create product </a>
                         </li>
                     </ul>
                 </nav>

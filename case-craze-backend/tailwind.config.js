@@ -7,3 +7,4 @@ export default {
   mode: 'jit', // Add this line
   plugins: [],
 };
+
