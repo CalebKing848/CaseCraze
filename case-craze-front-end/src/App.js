@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Navigation from "./Navigation/Nav";
 import Products from "./Products/Products";
@@ -9,6 +10,23 @@ import Card from "./components/Card";
 import "./index.css";
 
 function App() {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3333/api/products');
+        setProducts(response.data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   // ----------- Input Filter -----------
@@ -43,25 +61,25 @@ function App() {
     // Applying selected filter
     if (selected) {
       filteredProducts = filteredProducts.filter(
-        ({ category, color, company, newPrice, title }) =>
+        ({ category, color, company, amount, title }) =>
           category === selected ||
           color === selected ||
           company === selected ||
-          newPrice === selected ||
+          amount === selected ||
           title === selected
       );
     }
 
     return filteredProducts.map(
-      ({ img, title, star, reviews, prevPrice, newPrice }) => (
+      ({ imageUrl, title, star, reviews, prevPrice, amount }) => (
         <Card
           key={Math.random()}
-          img={img}
+          imageUrl={imageUrl}
           title={title}
           star={star}
           reviews={reviews}
           prevPrice={prevPrice}
-          newPrice={newPrice}
+          amount={amount}
         />
       )
     );

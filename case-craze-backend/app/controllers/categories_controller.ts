@@ -12,4 +12,10 @@ export default class CategoriesController {
     await Category.create({ name })
     response.redirect('/')
   }
+
+  async getAllCategorys({ response }: HttpContext) {
+    const categories = await Category.all();
+    return response.json(categories);
+  }
+
 }

@@ -20,6 +20,7 @@ export default class ProductsController {
     return response.json(products);
   }
 
+
   async create({ view }: HttpContext) {
     const categories = await Category.all()
     return view.render('pages/products/create', { categories })
