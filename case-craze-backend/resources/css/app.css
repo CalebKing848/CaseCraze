@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.top-container {
+    background: #000;
+    color: #fff;
+}
+
+.nav-items {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+li {
+   list-style-type: none;
+}
+
+a:hover {
+    color: #ededed; 
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    width: 100%;
+}
+
+.login-main {
+    width: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 0px auto;
+    padding: 35px 40px 40px 40px;
+}
+
+.login-header {
+    font-size: 30px;
+    margin-bottom: 10px
+}
+
+.login-label {
+    font-weight: bold;
+}
+
+.login-input {
+    border: 1px solid #000;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.login-item {
+    display: grid;
+    margin-bottom: 10px;
+}
+
+.login-btn {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    padding: 4px;
+}
+
+.login-item-two {
+    margin-top: 19px;
+}

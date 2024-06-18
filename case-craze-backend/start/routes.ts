@@ -17,5 +17,8 @@ router.get('/', [ProductsController, 'index']).use(middleware.auth())
 router.on('/login').render('pages/login')
 router.post('/login', [SessionController, 'store'])
 
+// Logout route
+router.post('/logout', [SessionController, 'destroy']).use(middleware.auth())
+
 router.resource('categories', CategoriesController).use('*', middleware.auth())
 router.resource('products', ProductsController).use('*', middleware.auth())
