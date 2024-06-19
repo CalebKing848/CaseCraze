@@ -24,8 +24,8 @@ function App() {
     fetchProducts();
   }, []);
 
-
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [priceRange, setPriceRange] = useState(null);
 
   // ----------- Input Filter -----------
   const [query, setQuery] = useState("");
@@ -40,7 +40,12 @@ function App() {
 
   // ----------- Radio Filtering -----------
   const handleChange = (event) => {
-    setSelectedCategory(event.target.value);
+    const { name, value } = event.target;
+    if (name === 'category') {
+      setSelectedCategory(value);
+    } else if (name === 'price') {
+      setPriceRange(value);
+    }
   };
 
   // ------------ Button Filtering -----------
@@ -48,7 +53,7 @@ function App() {
     setSelectedCategory(event.target.value);
   };
 
-  function filteredData(products, selected, query) {
+  function filteredData(products, selected, priceRange, query) {
     let filteredProducts = products;
 
     // Filtering Input Items
@@ -68,6 +73,17 @@ function App() {
       );
     }
 
+    // Applying price range filter
+    if (priceRange) {
+      filteredProducts = filteredProducts.filter(({ amount }) => {
+        if (priceRange === '0-50') return amount >= 0 && amount <= 50;
+        if (priceRange === '50-100') return amount > 50 && amount <= 100;
+        if (priceRange === '100-150') return amount > 100 && amount <= 150;
+        if (priceRange === 'over-150') return amount > 150;
+        return true;
+      });
+    }
+
     return filteredProducts.map(
       ({ imageUrl, title, star, reviews, prevPrice, amount }) => (
         <Card
@@ -83,7 +99,7 @@ function App() {
     );
   }
 
-  const result = filteredData(products, selectedCategory, query)
+  const result = filteredData(products, selectedCategory, priceRange, query)
 
   return (
     <>
