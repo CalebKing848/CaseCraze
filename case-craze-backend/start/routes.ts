@@ -25,4 +25,4 @@ router.resource('products', ProductsController).use('*', middleware.auth())
 
 router.get('/api/products', [ProductsController, 'getAllProducts']);
 
-router.get('/api/categorys', [CategoriesController, 'getAllCategorys']);
+router.get('/api/categories', [CategoriesController, 'getAllCategorys']);

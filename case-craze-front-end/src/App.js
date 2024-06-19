@@ -8,8 +8,8 @@ import Card from "./components/Card";
 import "./index.css";
 
 function App() {
-
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,7 +21,17 @@ function App() {
       }
     };
 
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://localhost:3333/api/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
     fetchProducts();
+    fetchCategories();
   }, []);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -64,12 +74,7 @@ function App() {
     // Applying selected filter
     if (selected) {
       filteredProducts = filteredProducts.filter(
-        ({ category, color, company, amount, title }) =>
-          category === selected ||
-          color === selected ||
-          company === selected ||
-          amount === selected ||
-          title === selected
+        (product) => product.categoryId == selected
       );
     }
 
@@ -85,9 +90,9 @@ function App() {
     }
 
     return filteredProducts.map(
-      ({ imageUrl, title, star, reviews, prevPrice, amount }) => (
+      ({ id, imageUrl, title, star, reviews, prevPrice, amount }) => (
         <Card
-          key={Math.random()}
+          key={id}
           imageUrl={imageUrl}
           title={title}
           star={star}
@@ -99,11 +104,11 @@ function App() {
     );
   }
 
-  const result = filteredData(products, selectedCategory, priceRange, query)
+  const result = filteredData(products, selectedCategory, priceRange, query);
 
   return (
     <>
-      <Sidebar handleChange={handleChange} />
+      <Sidebar categories={categories} handleChange={handleChange} />
       <Navigation query={query} handleInputChange={handleInputChange} />
       <Products result={result} />
     </>

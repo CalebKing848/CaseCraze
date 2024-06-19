@@ -1,47 +1,57 @@
-import Input from "../../components/Input";
-import "./Price.css";
+import React from 'react';
 
-const Price = ({ handleChange }) => {
+function Price({ handleChange }) {
   return (
-    <>
-      <div className="ml">
-        <h2 className="sidebar-title price-title">Price</h2>
-
-        <label className="sidebar-label-container">
-          <input onChange={handleChange} type="radio" value="" name="price" />
-          <span className="checkmark"></span>All
-        </label>
-
-        <Input
-          handleChange={handleChange}
-          value="0-50"
-          title="$0 - $50"
-          name="price"
-        />
-
-        <Input
-          handleChange={handleChange}
-          value="50-100"
-          title="$50 - $100"
-          name="price"
-        />
-
-        <Input
-          handleChange={handleChange}
-          value="100-150"
-          title="$100 - $150"
-          name="price"
-        />
-
-        <Input
-          handleChange={handleChange}
-          value="over-150"
-          title="Over $150"
-          name="price"
-        />
-      </div>
-    </>
+    <div className="price-filter">
+      <h2>Price</h2>
+      <ul>
+        <li>
+          <label>
+            <input
+              type="radio"
+              name="price"
+              value="0-50"
+              onChange={handleChange}
+            />
+            $0 - $50
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="radio"
+              name="price"
+              value="50-100"
+              onChange={handleChange}
+            />
+            $50 - $100
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="radio"
+              name="price"
+              value="100-150"
+              onChange={handleChange}
+            />
+            $100 - $150
+          </label>
+        </li>
+        <li>
+          <label>
+            <input
+              type="radio"
+              name="price"
+              value="over-150"
+              onChange={handleChange}
+            />
+            Over $150
+          </label>
+        </li>
+      </ul>
+    </div>
   );
-};
+}
 
 export default Price;
