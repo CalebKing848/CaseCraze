@@ -9,7 +9,7 @@ nav {
     background-color: #1f1f1f;
 }
 
-input {
+.nav-container input {
     padding: 12px 20px;
     border: none;
     background: #f7f6f6;

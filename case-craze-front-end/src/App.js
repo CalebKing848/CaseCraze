@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import Navigation from "./Navigation/Nav";
 import Products from "./Products/Products";
 import Sidebar from "./Sidebar/Sidebar";
@@ -36,19 +35,12 @@ function App() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [priceRange, setPriceRange] = useState(null);
-
-  // ----------- Input Filter -----------
   const [query, setQuery] = useState("");
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
 
-  const filteredItems = products.filter(
-    (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
-  );
-
-  // ----------- Radio Filtering -----------
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === 'category') {
@@ -58,27 +50,21 @@ function App() {
     }
   };
 
-  // ------------ Button Filtering -----------
-  const handleClick = (event) => {
-    setSelectedCategory(event.target.value);
-  };
-
-  function filteredData(products, selected, priceRange, query) {
+  function filteredData(products, categories, selected, priceRange, query) {
     let filteredProducts = products;
 
-    // Filtering Input Items
     if (query) {
-      filteredProducts = filteredItems;
+      filteredProducts = filteredProducts.filter(
+        (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      );
     }
 
-    // Applying selected filter
     if (selected) {
       filteredProducts = filteredProducts.filter(
         (product) => product.categoryId == selected
       );
     }
 
-    // Applying price range filter
     if (priceRange) {
       filteredProducts = filteredProducts.filter(({ amount }) => {
         if (priceRange === '0-50') return amount >= 0 && amount <= 50;
@@ -89,8 +75,16 @@ function App() {
       });
     }
 
+    filteredProducts = filteredProducts.map((product) => {
+      const category = categories.find(cat => cat.id === product.categoryId);
+      return {
+        ...product,
+        categoryName: category ? category.name : "Unknown",
+      };
+    });
+
     return filteredProducts.map(
-      ({ id, imageUrl, title, star, reviews, prevPrice, amount }) => (
+      ({ id, imageUrl, title, star, reviews, prevPrice, amount, categoryName }) => (
         <Card
           key={id}
           imageUrl={imageUrl}
@@ -99,12 +93,13 @@ function App() {
           reviews={reviews}
           prevPrice={prevPrice}
           amount={amount}
+          categoryName={categoryName}
         />
       )
     );
   }
 
-  const result = filteredData(products, selectedCategory, priceRange, query);
+  const result = filteredData(products, categories, selectedCategory, priceRange, query);
 
   return (
     <>

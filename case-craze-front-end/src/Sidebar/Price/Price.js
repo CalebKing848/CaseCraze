@@ -1,10 +1,22 @@
 import React from 'react';
+import "./Price.css";
 
 function Price({ handleChange }) {
   return (
     <div className="price-filter">
       <h2>Price</h2>
       <ul>
+      <li>
+          <label>
+            <input
+              type="radio"
+              name="price"
+              value="all"
+              onChange={handleChange}
+            />
+             Over $0
+          </label>
+        </li>
         <li>
           <label>
             <input

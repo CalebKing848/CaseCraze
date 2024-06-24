@@ -5,6 +5,17 @@ function Category({ categories, handleChange }) {
     <div className="category-filter">
       <h2>Categories</h2>
       <ul>
+        <li>
+          <label>
+            <input
+              type="radio"
+              name="category"
+              value=""
+              onChange={handleChange}
+            />
+            All
+          </label>
+        </li>
         {categories.map((category) => (
           <li key={category.id}>
             <label>
