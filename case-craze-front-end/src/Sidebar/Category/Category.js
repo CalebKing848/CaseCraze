@@ -13,7 +13,7 @@ function Category({ categories, handleChange }) {
               value=""
               onChange={handleChange}
             />
-            All
+            All Iphones
           </label>
         </li>
         {categories.map((category) => (
